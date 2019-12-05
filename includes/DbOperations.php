@@ -27,7 +27,7 @@
 		public function getStudents(){
 			$stmt = $this->con->prepare("SELECT id,reg_no,name,major,phone,email FROM students");	
 			$stmt->execute();
-			$stmt->bind_result( $id, $event_code,$name,$major,$phone,$email);				 		 
+			$stmt->bind_result( $id, $reg_no, $name,$major,$phone,$email);				 		 
 			$events = array();              
                  while ($stmt->fetch()) {
 					 $event = array();
