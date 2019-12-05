@@ -24,15 +24,19 @@
         }
 
         
-		public function getevents(){
-			$stmt = $this->con->prepare("SELECT id,event_code FROM tic_events");	
+		public function getStudents(){
+			$stmt = $this->con->prepare("SELECT id,reg_no,name,major,phone,email FROM students");	
 			$stmt->execute();
-			$stmt->bind_result( $id, $event_code);				 		 
+			$stmt->bind_result( $id, $event_code,$name,$major,$phone,$email);				 		 
 			$events = array();              
                  while ($stmt->fetch()) {
 					 $event = array();
 					 $event['id'] = $id;
-					 $event['event_code'] = $event_code; 
+                     $event['reg_no'] = $reg_no; 
+                     $event['name'] = $name;
+                     $event['major'] = $major; 
+                     $event['phone'] = $phone;
+					 $event['email'] = $email; 
 					 array_push($events, $event);					
 					}					 
             return $events;
